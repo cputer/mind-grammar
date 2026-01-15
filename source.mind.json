@@ -1,0 +1,157 @@
+{
+  "name": "Mind",
+  "scopeName": "source.mind",
+  "fileTypes": ["mind"],
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#attributes" },
+    { "include": "#strings" },
+    { "include": "#numbers" },
+    { "include": "#keywords" },
+    { "include": "#types" },
+    { "include": "#functions" },
+    { "include": "#operators" },
+    { "include": "#punctuation" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.mind",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.block.mind",
+          "begin": "/\\*",
+          "end": "\\*/"
+        }
+      ]
+    },
+    "attributes": {
+      "patterns": [
+        {
+          "name": "meta.attribute.mind",
+          "match": "#\\[([a-zA-Z_][a-zA-Z0-9_]*)(\\([^)]*\\))?\\]",
+          "captures": {
+            "1": { "name": "entity.name.function.attribute.mind" }
+          }
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.mind",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.mind",
+              "match": "\\\\."
+            }
+          ]
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.float.mind",
+          "match": "\\b[0-9]+\\.[0-9]+([eE][+-]?[0-9]+)?\\b"
+        },
+        {
+          "name": "constant.numeric.integer.mind",
+          "match": "\\b[0-9]+\\b"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.mind",
+          "match": "\\b(if|else|for|while|loop|match|return|break|continue)\\b"
+        },
+        {
+          "name": "keyword.declaration.mind",
+          "match": "\\b(fn|let|const|struct|enum|type|impl|trait|module|import|use|pub|mut)\\b"
+        },
+        {
+          "name": "keyword.other.mind",
+          "match": "\\b(on|diff|async|await|where)\\b"
+        },
+        {
+          "name": "constant.language.mind",
+          "match": "\\b(true|false|null|self|Self)\\b"
+        }
+      ]
+    },
+    "types": {
+      "patterns": [
+        {
+          "name": "storage.type.primitive.mind",
+          "match": "\\b(f16|f32|f64|i8|i16|i32|i64|u8|u16|u32|u64|bool|str|void)\\b"
+        },
+        {
+          "name": "storage.type.tensor.mind",
+          "match": "\\b(Tensor|tensor|Array|Vec|Map|Set|Option|Result)\\b"
+        },
+        {
+          "name": "entity.name.type.mind",
+          "match": "\\b[A-Z][a-zA-Z0-9_]*\\b"
+        }
+      ]
+    },
+    "functions": {
+      "patterns": [
+        {
+          "name": "entity.name.function.mind",
+          "match": "\\b([a-z_][a-zA-Z0-9_]*)\\s*(?=\\()"
+        },
+        {
+          "name": "support.function.builtin.mind",
+          "match": "\\b(print|println|zeros|ones|reshape|matmul|conv2d|relu|sigmoid|tanh|softmax|log_softmax|maxpool2d|sum|mean|abs|sqrt|log|exp|sin|cos|stack|gather|argmax|backward)\\b"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.arrow.mind",
+          "match": "->"
+        },
+        {
+          "name": "keyword.operator.comparison.mind",
+          "match": "(==|!=|<=|>=|<|>)"
+        },
+        {
+          "name": "keyword.operator.assignment.mind",
+          "match": "(=|\\+=|-=|\\*=|/=)"
+        },
+        {
+          "name": "keyword.operator.arithmetic.mind",
+          "match": "(\\+|-|\\*|/|%|@)"
+        },
+        {
+          "name": "keyword.operator.logical.mind",
+          "match": "(&&|\\|\\||!)"
+        },
+        {
+          "name": "keyword.operator.range.mind",
+          "match": "\\.\\."
+        }
+      ]
+    },
+    "punctuation": {
+      "patterns": [
+        {
+          "name": "punctuation.separator.mind",
+          "match": "(,|;|:)"
+        },
+        {
+          "name": "punctuation.bracket.mind",
+          "match": "(\\[|\\]|\\{|\\}|\\(|\\))"
+        }
+      ]
+    }
+  }
+}
